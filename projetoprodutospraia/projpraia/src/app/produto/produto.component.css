@@ -1,0 +1,15 @@
+img{
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #aaa;
+}
+.grad1{
+    /* background-color: #ddd; */
+    /* background-image: linear-gradient(to right, rgba(255,255,255,.3) 1px, transparent 1px); */
+    background-color: #312d28;
+    background-image: linear-gradient(#000, #966431, #bc8b5a, #e3b98f);
+    background-size: 10px auto;
+    background-repeat: repeat-x;
+    min-height: 650px;
+    margin-top: 30px;
+}

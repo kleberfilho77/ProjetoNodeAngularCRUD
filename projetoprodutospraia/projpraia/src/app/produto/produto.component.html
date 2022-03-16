@@ -1,0 +1,74 @@
+<div class="container-fluid grad1 mt-5">
+    <div class="row pt-5">
+        <!-- FORMULARIO -->
+        <div class="col-md-4">
+            <div class="card border-dark bg-transparent shadow">
+                <div class="card-body">
+                    
+                    <p class="text-center">Cadastre o produto aqui!</p>
+
+                    <div class="form-vertical">
+                        <label>Codigo:</label>
+                        <input type="number" name='codigo' [(ngModel)]='produto.codigo'
+                        class="form-control form-control-sm" placeholder="Digite o codigo">
+
+                        <label>Nome:</label>
+                        <input type="text" name='nome' [(ngModel)]='produto.nome'
+                        class="form-control form-control-sm" placeholder="Digite o nome">
+
+                        <label>Preço:</label>
+                        <input type="text" name='preco' [(ngModel)]='produto.preco'
+                        class="form-control form-control-sm" onkeyup="k(this);" placeholder="Digite o preço">
+
+                        <label>Imagem:</label>
+                        <input type="text" name='imagem' [(ngModel)]='produto.imagem'
+                        class="form-control form-control-sm" placeholder="Digite a URL da imagem">
+                        <br>
+                        <button (click)='gravar();' class="btn btn-dark btn-sm">Gravar</button>
+
+                    </div>
+                    <div>
+                        <label>Buscar pelo código:</label>
+                        <input type="number" name='buscacodigo' id="buscacode"
+                        class="form-control form-control-sm" placeholder="Digite o codigo" (input)="buscarcodigo();">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTA DE PRODUTOS -->
+        <div class="col-md-8 mb-5">
+            <div class="card border-dark bg-transparent shadow">
+                <div class="card-body">
+                    <p class="text-center">Lista dos Produtos</p>
+
+                    <table class="table table-bordered table-striped table-hover mt-2">
+                        <thead class="bg-dark text-white">
+                            <tr class="text-center">
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Imagem</th>
+                                <th>Alterar</th>
+                                <th>Remover</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of produtos;index as i">
+                                <td><input type="text" name='inputcodigo' id="inputcode{{i}}" value={{item.codigo}}
+                                    class="form-control" disabled/> </td>
+                                    <td><input type="text" name='inputnome' id="inputname{{i}}" value={{item.nome}}
+                                        class="form-control"/> </td>
+                                        <td><input type="text" name='inputpreco' id="inputprice{{i}}" onkeyup="k(this);" value={{visualizaValor(item.preco)}}
+                                            class="form-control"/> </td>
+                                <td class="text-center"><img [src]='item.imagem'></td>
+                                <td><div style="justify-content: center; display: flex;"><button (click)='deletar(i);' class="btn btn-dark btn-sm">Deletar</button></div></td>
+                                <td><div style="justify-content: center; display: flex;"><button (click)='alterar(i);' class="btn btn-dark btn-sm">Alterar</button></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
